@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Spectral:400,700');
+
+* {
+    box-sizing: border-box;
+}
+
+html,body {
+    background-color: black;
+    color: #ffffff;
+    font-family: 'Spectral', serif;
+}
+body{
+    margin: 10px;
+}
+header {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.pull-left{
+    align-self: stretch;
+}
+.pull-right{
+    align-self: flex-end;
+}
+
