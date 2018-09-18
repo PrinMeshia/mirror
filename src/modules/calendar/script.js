@@ -20,7 +20,7 @@ class calendar {
             mn = (event.getMinutes() < 10 ? '0' : '') + event.getMinutes(),
             se = (event.getSeconds() < 10 ? '0' : '') + event.getSeconds();
         this.state.date = date
-        let time = '<div class="flex-column"><div id="calendar_date">' + date + '</div><br/><div id="calendar_clock"><span>' + hr + '</span>:<span>' + mn + '</span>:<span>' + se + '</span></div></div>';
+        let time = '<div class="flex-column"><div id="calendar_date">' + date + '</div><div id="calendar_clock"><span>' + hr + '</span>:<span>' + mn + '</span>:<span>' + se + '</span></div></div>';
         document.querySelector("#" + this.state.id).innerHTML = time;
     }
     render() {
