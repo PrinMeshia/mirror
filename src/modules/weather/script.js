@@ -21,8 +21,8 @@ class weather {
       success: function (weather) {
         console.log(weather);
         let html = "<p>" + weather.city + ', ' + weather.region + "</p>";
-        html += '<i class="icon-' + weather.code + '"></i><span> ' + weather.temp + '&deg;' + weather.units.temp + "</span>";
-        $("#" + self.state.id).html(html);
+        html += '<p ><i class="weather-icon icon-' + weather.code + '"></i><span> ' + weather.temp + '&deg;' + weather.units.temp + "</span></p>";
+        $("#" + self.state.id).html('<div class="flex-column">'+html+'</div>');
       },
       error: function (error) {
         $("#" + self.state.id).html('<p>' + error + '</p>');

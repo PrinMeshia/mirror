@@ -1,0 +1,5 @@
+#calendar_date,#calendar_clock {
+    display: block;
+    clear: both;
+    float: left;
+}

@@ -24,3 +24,7 @@ header {
     align-self: flex-end;
 }
 
+[id^=app_]{
+    display: flex;
+}
+

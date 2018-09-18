@@ -2,11 +2,12 @@ export default
 [
     {
         name:'calendar',
-        position:'top'
+        position:'top',
+        styles:['calendar.css']
     },
     {
         name:'weather',
         position:'top',
-        styles:['css.css']
+        styles:['weather.css']
     },
 ]
