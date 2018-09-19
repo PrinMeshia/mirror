@@ -4,27 +4,36 @@
     box-sizing: border-box;
 }
 
-html,body {
+html,
+body {
     background-color: black;
     color: #ffffff;
     font-family: 'Spectral', serif;
 }
-body{
-    margin: 10px;
+
+body {
+    padding: 10px;
+    height: 100vh;
+    overflow: hidden;
 }
+
 header {
     font-size: 2rem;
     font-weight: 700;
     text-transform: uppercase;
 }
-.pull-left{
+footer{
+    position: absolute;
+    bottom: 0;
+}
+.pull-left {
     align-self: stretch;
 }
-.pull-right{
+
+.pull-right {
     align-self: flex-end;
 }
 
-[id^=app_]{
+[id^=app_] {
     display: flex;
 }
-

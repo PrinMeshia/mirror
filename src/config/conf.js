@@ -11,6 +11,7 @@ export default
     },
     {
         name:'rssReader',
-        position:'bottom'
+        position:'bottom',
+        styles:['rss.css']
     }
 ]
