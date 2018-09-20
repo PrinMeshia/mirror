@@ -13,5 +13,10 @@ export default
         name:'rssReader',
         position:'bottom',
         styles:['rss.css']
+    },
+    {
+        name:'atom',
+        position:'middle-center',
+        styles:['atom.css']
     }
 ]
