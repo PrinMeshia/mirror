@@ -26,9 +26,11 @@ class rssReader {
           let items = data.items;
           items.map(async flux => {
             let title = flux.title;
+            let content = flux.content;
             let event = new Date(flux.pubDate);
             let date = event.toLocaleString(confdate.local, confdate.format);
             let dataFlux = {
+              content:content.replace(/<[^>]*>/g,""),
               title: title,
               date: date,
               src: src
@@ -66,7 +68,7 @@ class rssReader {
   render() {
     let item = this.state.news[Math.floor(Math.random() * this.state.news.length)];
     $("#" + this.state.id).fadeOut(function () {
-      $(this).html('<div id="rssflux"><div class="rss-info">' + item.src + ' - ' + item.date + '</div><h2 id="rss-title">' + item.title + '</h2></div>');
+      $(this).html('<div id="rssflux"><div class="rss-info">' + item.src + ' - ' + item.date + '</div><h2 id="rss-title">' + item.title + '</h2><p>' + item.content + '</p></div>');
     }).fadeIn();
   }
 }
