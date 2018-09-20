@@ -11,8 +11,8 @@ const loadStyles = async (component, stylesheets) => {
 }
 const loadModule = async (name, id) => {
     const moduleSpecifier = '../modules/' + name + '/script.js';
-    const module = await import(moduleSpecifier);
-    module.default(id);
+    import(moduleSpecifier).then(module => module.default(id)) ;
+    
 }
 
 window.onload = () => {

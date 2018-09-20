@@ -11,6 +11,8 @@ export default
         }
     },
     rss:[
-        "https://www.bfmtv.com/rss/info/flux-rss/flux-toutes-les-actualites/"
+        
+        "https://www.bfmtv.com/rss/info/flux-rss/flux-toutes-les-actualites/",
+        "https://www.01net.com/rss/info/flux-rss/flux-toutes-les-actualites/"
     ]
 }

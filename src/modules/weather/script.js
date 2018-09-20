@@ -17,7 +17,6 @@ class weather {
       woeid: '',
       unit: this.state.config.unit,
       success: function (weather) {
-        console.log(weather);
         let html = "<p>" + weather.city + ', ' + weather.region + "</p>";
         html += '<div class="weather-code"><i class="weather-icon icon-' + weather.code + '"></i><span> ' + weather.temp + '&deg;' + weather.units.temp + "</span></div>";
         $("#" + self.state.id).html('<div class="flex-column">'+html+'</div>');

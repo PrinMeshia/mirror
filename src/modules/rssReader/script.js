@@ -1,5 +1,5 @@
 import Config from './conf.js';
-
+const inter = "https://api.rss2json.com/v1/api.json?rss_url=";
 class rssReader {
   constructor(id) {
     this.state = {
@@ -14,42 +14,58 @@ class rssReader {
   }
   loadNews() {
     clearInterval(this.newsinterval);
+    this.state.news = [];
     let self = this;
     let confdate = this.state.config.date;
     let lstRss = this.state.config.rss;
     let promises = [];
     for (var i = 0; i < lstRss.length; i++) {
       promises.push(
-        $.ajax({
-          url: lstRss[i],
-          type: 'GET',
-          success: function (xml) { // code_html contient le HTML renvoyé
-            let src = $(xml).find('channel description').first().text();
-            let items = $(xml).find('channel item');
-            items = Array.from(items);
-            items.map(async flux => {
-              let title = $(flux).find('title').text();
-              let event = new Date($(flux).find('pubDate').text());
-              let date = event.toLocaleString(confdate.local, confdate.format);
-              let dataFlux = {
-                title: title,
-                date: date,
-                src: src
-              };
-              self.state.news.push(dataFlux)
-            })
-          }
+        $.get(inter+lstRss[i]).done(function (data) {
+          let src = data.feed.description;
+          let items = data.items;
+          items.map(async flux => {
+            let title = flux.title;
+            let event = new Date(flux.pubdate);
+            let date = event.toLocaleString(confdate.local, confdate.format);
+            let dataFlux = {
+              title: title,
+              date: date,
+              src: src
+            };
+            self.state.news.push(dataFlux)
+          })
         })
+        // $.ajax({
+        //   url: lstRss[i],
+        //   type: 'GET',
+        //   success: function (xml) { // code_html contient le HTML renvoyé
+        //     let src = $(xml).find('channel description').first().text();
+        //     let items = $(xml).find('channel item');
+        //     items = Array.from(items);
+        //     items.map(async flux => {
+        //       let title = $(flux).find('title').text();
+        //       let event = new Date($(flux).find('pubDate').text());
+        //       let date = event.toLocaleString(confdate.local, confdate.format);
+        //       let dataFlux = {
+        //         title: title,
+        //         date: date,
+        //         src: src
+        //       };
+        //       self.state.news.push(dataFlux)
+        //     })
+        //   }
+        // })
       )
     }
-    Promise.all(promises).then(()=> {
+    Promise.all(promises).then(() => {
       this.render();
       this.newsinterval = window.setInterval(this.render.bind(this), 15000);
     });
   }
   render() {
     let item = this.state.news[Math.floor(Math.random() * this.state.news.length)];
-    $("#" + this.state.id).fadeOut(function() {
+    $("#" + this.state.id).fadeOut(function () {
       $(this).html('<div id="rssflux"><div class="rss-info">' + item.src + ' - ' + item.date + '</div><h2 id="rss-title">' + item.title + '</h2></div>');
     }).fadeIn();
   }
