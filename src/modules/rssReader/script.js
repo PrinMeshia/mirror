@@ -26,7 +26,7 @@ class rssReader {
           let items = data.items;
           items.map(async flux => {
             let title = flux.title;
-            let event = new Date(flux.pubdate);
+            let event = new Date(flux.pubDate);
             let date = event.toLocaleString(confdate.local, confdate.format);
             let dataFlux = {
               title: title,
