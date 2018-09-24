@@ -10,7 +10,6 @@ class rssReader {
     this.newsinterval = undefined;
     this.loadNews();
     window.setInterval(this.loadNews.bind(this), 3600000);
-
   }
   loadNews() {
     clearInterval(this.newsinterval);
@@ -38,26 +37,6 @@ class rssReader {
             self.state.news.push(dataFlux)
           })
         })
-        // $.ajax({
-        //   url: lstRss[i],
-        //   type: 'GET',
-        //   success: function (xml) { // code_html contient le HTML renvoyé
-        //     let src = $(xml).find('channel description').first().text();
-        //     let items = $(xml).find('channel item');
-        //     items = Array.from(items);
-        //     items.map(async flux => {
-        //       let title = $(flux).find('title').text();
-        //       let event = new Date($(flux).find('pubDate').text());
-        //       let date = event.toLocaleString(confdate.local, confdate.format);
-        //       let dataFlux = {
-        //         title: title,
-        //         date: date,
-        //         src: src
-        //       };
-        //       self.state.news.push(dataFlux)
-        //     })
-        //   }
-        // })
       )
     }
     Promise.all(promises).then(() => {
